@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { CORS } from './constants';
 import * as morgan from 'morgan';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,8 +12,15 @@ async function bootstrap() {
   await app.listen(port);
 
   app.use(morgan('dev'));
-  app.setGlobalPrefix('api');
   app.enableCors(CORS);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transformOptions:{
+        enableImplicitConversion: true,
+      }
+    })
+  )
 
   console.log(`⚡📱 Application running on port ${port} ...`);
 }
