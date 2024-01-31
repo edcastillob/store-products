@@ -1,35 +1,76 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="https://edwarcastillo.netlify.app/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">Repositorio Backend Elsolnec Node.js</a> </p>
     <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+    <p align="center">
+  <a href="https://edwarcastillo.netlify.app/" target="blank"><img src="https://raw.githubusercontent.com/edcastillob/Countries-ProyectoIndividual/main/client/src/assets/ec.png" width="150" alt="EDCastillo Logo" /></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+</p>
+ 
+## Descripcion
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Proyecto Backend para Prueba Técnica  
 
 ## Installation
-
+Descarga ó Clona el Proyecto, 
 ```bash
 $ npm install
+```
+De estas maneras ya con las dependencias instaladas procedemos a configurar las variables de entorno y base de datos.
+
+## .ENV, Develop
+ Revisamos o creamos el archivo ".develop.env" para configurar el puerto 8000 como default en las colecciones
+```bash
+    #Config DataBase
+
+    DB_HOST=localhost, Tu localhost
+    DB_PORT=5432, Puerto por defecto Postgres
+    DB_USER=          :Ingresa el usuario de tu cliente postgres 
+    DB_PASSWORD=      :Ingresa la Contraseña de tu cliente postgres
+    DB_NAME=          :Ingresa la base de datos para correr la migración
+```
+## Mi .ENV, Develop Utilizado
+ ```
+    PORT=8000
+
+    #Config DataBase
+
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_USER=elsolnec
+    DB_PASSWORD=elsolnec
+    DB_NAME=elsolnec
+```
+## Para Correr la migración en ambiente windows
+ ```bash
+$ npm run m:gen -- ./migrations/init
+
+# Una vez completada procedemos a:
+
+$ npm run m:run
+```
+## En esta instancia contamos con la base de datos para proceder a realizar las pruebas
+
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706714198/prodelevatepf/kxyq5bu3rtrpxjggk5pl.png" alt="Img Migracion" />
+</p>
+
+
+## En Windows se setea el `.env` para la migración
+
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706714852/prodelevatepf/mykurn0t7hugo2u2ndmj.png" alt="Img Migracion" />
+</p>
+
+## Si tu Sistema operativo es Linux deberas modificar el package.json para poder correr la migración
+## En Linux, se establece la configuración del entorno en el archivo `.env` para la migración
+
+Aquí, debes cambiar el `set` por `export`:
+
+```bash
+    "m:gen": "export NODE_ENV=develop && npm run orm:init migration:generate",
+    "m:run": "export NODE_ENV=develop && npm run orm:init migration:run"
 ```
 
 ## Running the app
@@ -45,29 +86,32 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## La documentación adicional la encontraras con Swagger donde están modelados y documentados todos los endpoint de la aplicación
 
-```bash
-# unit tests
-$ npm run test
+### Endpoints
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706716249/prodelevatepf/ddneyv9fvjgxewjiuhr3.png" alt="Img Migracion" />
+</p>
 
-# e2e tests
-$ npm run test:e2e
+### Esquemas DTO Entity
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706716307/prodelevatepf/irrxzhvhjtv7p7jfzwjz.png" alt="Img Migracion" />
+</p>
 
-# test coverage
-$ npm run test:cov
-```
+### Consultas Product All
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706716353/prodelevatepf/hj175ikkrdavkqglsb54.png" alt="Img Migracion" />
+</p>
 
-## Support
+### Server On
+<p align="center">
+  <img src="https://res.cloudinary.com/prodelevatepf/image/upload/v1706716409/prodelevatepf/h9gox7tfelzbc7azrpdm.png" alt="Img Migracion" />
+</p>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+ <p align="center"></a> </p>
+    <p align="center">
+    <p align="center">
+  <a href="https://edwarcastillo.netlify.app/" target="blank"><img src="https://raw.githubusercontent.com/edcastillob/Countries-ProyectoIndividual/main/client/src/assets/ec.png" width="150" alt="EDCastillo Logo" /></a>
+</p>
+<hr/>
+<hr/>

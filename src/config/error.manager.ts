@@ -1,16 +1,33 @@
-import { HttpException, HttpStatus } from "@nestjs/common";
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 export class ErrorManager extends Error {
-    constructor({type, message}:{type: keyof typeof HttpStatus, message: string}){
-        super(`${type} :: ${message}`);
+  constructor({
+    type,
+    message,
+  }: {
+    type: keyof typeof HttpStatus;
+    message: string;
+  }) {
+    super(`${type} :: ${message}`);
+  }
+
+  public static createSignatureError(message: string) {
+    const name = message.split(' :: ')[0];
+    let statusCode: HttpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+
+    if (HttpStatus[name]) {
+      statusCode = HttpStatus[name];
     }
 
-    public static createSignatureError(message: string){
-        const name = message.split(' :: ')[0];
-        if(name){
-            throw new HttpException(message, HttpStatus[name])
-        }else{
-            throw new HttpException(message, HttpStatus.INTERNAL_SERVER_ERROR)
-        }
+    // Manejar casos específicos con un mapeo explícito
+    const statusMapping: Record<string, HttpStatus> = {
+      NOT_FOUND: HttpStatus.NOT_FOUND,
+    };
+
+    if (statusMapping[name]) {
+      statusCode = statusMapping[name];
     }
+
+    throw new HttpException(message, statusCode);
+  }
 }

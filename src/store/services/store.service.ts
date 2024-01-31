@@ -16,7 +16,7 @@ export class StoreService {
         if (body.city.length !== 3) {
             throw new HttpException({
                 error: 'The city code must be 3 characters',
-            }, HttpStatus.LENGTH_REQUIRED);
+            }, HttpStatus.INTERNAL_SERVER_ERROR);
         } 
         try {
             return await this._storeRepository.save(body)
@@ -26,12 +26,10 @@ export class StoreService {
                     type: 'BAD_REQUEST',
                     message: 'data uniqueness constraint',
                 });
-            }       
-            throw new ErrorManager({
-                type: 'INTERNAL_SERVER_ERROR',
-                message: 'Error creating store',
-            });
-        }
+            }else{      
+                throw  ErrorManager.createSignatureError(error.message)  
+            }
+        } 
     }
 
     public async findAllStore(): Promise<StoreEntity[]>{
@@ -64,13 +62,14 @@ export class StoreService {
                 }
             return store
 
-        } catch (error) {
-            throw new ErrorManager.createSignatureError(error.message)
+        } catch (error) {            
+            throw  ErrorManager.createSignatureError(error.message)        
         }
     }
 
-    public async updateStore(body: StoreUpdateDTO, id: string): Promise<StoreEntity |  UpdateResult | object> {   
-        if (body.city.length !== 3) {
+    public async updateStore(body: StoreUpdateDTO, id: string): Promise<StoreEntity |  UpdateResult | object> {  
+
+        if ( body.city && body.city.length !== 3) {
             throw new HttpException({
                 error: 'The city code must be 3 characters',
             }, HttpStatus.LENGTH_REQUIRED);
@@ -85,7 +84,7 @@ export class StoreService {
              }        
              return ({ "result":"successfully updated store"})
       } catch (error) {
-        throw new ErrorManager.createSignatureError(error.message)  
+        throw ErrorManager.createSignatureError(error.message)  
       }
     }
 
@@ -100,7 +99,7 @@ export class StoreService {
              }        
              return ({ "result":"successfully deleted store"})
       } catch (error) {
-        throw new ErrorManager.createSignatureError(error.message) 
+        throw ErrorManager.createSignatureError(error.message) 
       }
     }   
 }

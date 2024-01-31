@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductEntity } from '../entities/product.entity';
 import { DeleteResult, QueryFailedError, Repository, UpdateResult } from 'typeorm';
@@ -61,7 +61,8 @@ export class ProductService {
                 return product
 
         } catch (error) {
-            throw ErrorManager.createSignatureError(error.message)       
+            throw ErrorManager.createSignatureError(error.message) 
+                
         }
     }
     
