@@ -29,6 +29,8 @@
 
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 
 const renderDBConfig: DataSourceOptions = {
   type: 'postgres',
