@@ -32,7 +32,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 // import { ConfigModule, ConfigService } from '@nestjs/config';
 
 
-const DataSourceConfig: DataSourceOptions = {
+export const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
   host: 'dpg-cncg83qcn0vc73f1o3jg-a.oregon-postgres.render.com',
   port: 5432,
