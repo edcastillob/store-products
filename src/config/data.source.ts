@@ -29,10 +29,10 @@
 
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+// import { ConfigModule, ConfigService } from '@nestjs/config';
 
 
-const renderDBConfig: DataSourceOptions = {
+const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
   host: 'dpg-cncg83qcn0vc73f1o3jg-a.oregon-postgres.render.com',
   port: 5432,
@@ -47,4 +47,6 @@ const renderDBConfig: DataSourceOptions = {
   namingStrategy: new SnakeNamingStrategy(),
 };
 
-export const AppDS = new DataSource(renderDBConfig);
+// export const AppDS = new DataSource(renderDBConfig);
+export const AppDS = new DataSource(DataSourceConfig);
+
