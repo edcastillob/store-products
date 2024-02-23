@@ -45,8 +45,10 @@ export const DataSourceConfig: DataSourceOptions = {
   migrationsRun: true,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
+  extra: {
+    ssl: true 
+  }
 };
-
 // export const AppDS = new DataSource(renderDBConfig);
 export const AppDS = new DataSource(DataSourceConfig);
 
