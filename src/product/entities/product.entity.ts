@@ -16,6 +16,9 @@ export class ProductEntity extends BaseEntity implements IProduct {
   @Column({type: 'enum', enum: ProductType})
   type: ProductType;
 
+  @Column()
+  image: string;
+
   @OneToMany(() => ProductStoreEntity, (productsStores) => productsStores.product)
   storesIncludes: ProductStoreEntity[]
 }

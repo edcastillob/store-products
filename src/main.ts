@@ -6,8 +6,9 @@ import * as morgan from 'morgan';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {cors: true});
 
   const config = new DocumentBuilder()
   .setTitle('Backend Elsolnec')
@@ -21,26 +22,16 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT');
   await app.listen(port);
-  
   app.use(morgan('dev'));
-  app.enableCors(CORS);
-
+  app.enableCors(CORS); 
+  
   app.useGlobalPipes(
     new ValidationPipe({
       transformOptions:{
         enableImplicitConversion: true,
       }
     })
-  )
-
-
-
-
-
-
-
-
-  
+    )
   console.log(`⚡📱 Application running on port ${port} ...`);
 }
 bootstrap();

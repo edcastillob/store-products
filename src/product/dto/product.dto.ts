@@ -23,6 +23,11 @@ export class ProductDTO {
   @IsNotEmpty()
   @IsEnum(ProductType)
   type: ProductType;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  image: string;
 }
 
 export class ProductUpdateDTO {
@@ -41,4 +46,12 @@ export class ProductUpdateDTO {
   @IsOptional()
   @IsEnum(ProductType)
   type: ProductType;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  image: string;
+
+
+
 }

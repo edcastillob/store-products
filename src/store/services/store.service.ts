@@ -15,7 +15,7 @@ export class StoreService {
     public async createStore(body: StoreDTO): Promise<StoreEntity>{
         if (body.city.length !== 3) {
             throw new HttpException({
-                error: 'The city code must be 3 characters',
+                error: 'The city code must be 4 characters',
             }, HttpStatus.INTERNAL_SERVER_ERROR);
         } 
         try {
@@ -43,7 +43,7 @@ export class StoreService {
             }
             return stores
         } catch (error) {
-            throw new ErrorManager.createSignatureError(error.message)
+            throw  ErrorManager.createSignatureError(error.message)
         }
     }
     

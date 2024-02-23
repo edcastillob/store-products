@@ -6,7 +6,6 @@ import { RelationsStoreProductDTO, RelationsStoreProductUpdateDTO } from 'src/st
 import { ProductService } from './product.service';
 import { StoreService } from 'src/store/services/store.service';
 import { ErrorManager } from 'src/config/error.manager';
-import { IProduct } from 'src/interfaces/product.interface';
 import { IProductStores, IStoreProducts } from 'src/interfaces/product-store.interface';
 
 @Injectable()

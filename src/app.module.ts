@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { StoreModule } from './store/store.module';
 import { ConfigModule } from '@nestjs/config';
 import { DataSourceConfig } from './config/data.source';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,7 +15,9 @@ import { DataSourceConfig } from './config/data.source';
     }),
     TypeOrmModule.forRoot({...DataSourceConfig }),
     ProductModule, 
-    StoreModule
+    StoreModule,
+    UsersModule,
+    AuthModule
   ],
   
 })
