@@ -26,7 +26,7 @@
 // export const AppDS = new DataSource(DataSourceConfig);
 
 
-git satisfies
+
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
