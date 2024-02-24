@@ -16,7 +16,7 @@ export class UsersService {
 
   public async createUser(body: UserDTO): Promise<UserEntity> {
     try {
-      body.password = await bcrypt.hash(body.password, +process.env.HASH_SALT);
+      body.password = await bcrypt.hash(body.password, 5);
       const user = await this._userRepository.save(body);      
       const { password, ...userWithoutPassword } = user;
       return userWithoutPassword;

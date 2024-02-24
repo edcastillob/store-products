@@ -48,7 +48,8 @@ export class AuthService {
     return{
         accessToken: this.signJWT({
             payload,
-            secret: process.env.JWT_SECRET,
+            // secret: process.env.JWT_SECRET,
+            secret: 'backendpruebatecnica',
             expires: '1h'
         }),
         user
